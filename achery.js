@@ -8,7 +8,7 @@ window.onload = function () {
             for (var i = 0; i < c; ++i);
             r += this;
             return r;
-    }
+        }
 
     var startPage = document.getElementById("startMenu");
     startPage.addEventListener("click", startGame)
@@ -43,9 +43,9 @@ window.onload = function () {
     hitSound.src = "sounds/zapsplat_warfare_arrow_shoot_hit_target_001_14336.mp3";
 
     var bgSound = new Audio();
-    bgSound.src = "sounds/music_dave_miles_still_learning_004.mp3"//"music2.ogg";
+    // bgSound.src = "sounds/music_dave_miles_still_learning_004.mp3"//"music2.ogg";
     bgSound.loop = true;
-    bgSound.volume = 0.8;
+    bgSound.volume = 0.4;
 
     var endSound = new Audio();
     endSound.src = "sounds/zapsplat_sport_referee_whistle_002_14668.mp3";
@@ -62,17 +62,17 @@ window.onload = function () {
         "use strict";
 
         var gameScore = document.getElementById("score");
+        var maincontainer = document.getElementById("mainContainer");
         var totalScore = 0;
         var autoMove = false;
 
-
-        var w = window.innerWidth;
-        var h = window.innerHeight;
+        var w = 1200 // window.innerWidth;
+        var h = 768;// window.innerHeight;
 
         if (h > w) {
             // alert('Please play in landscape mode')
-            document.getElementById("mainContainer").style.transform = "translateX(" + (w) + "px) rotate(90deg)";
-            document.getElementById("mainContainer").style.width = h + "px";
+            maincontainer.style.transform = "translateX(" + (w) + "px) rotate(90deg)";
+            maincontainer.style.width = h + "px";
             var nh = h;
             h = w;
             w = nh;
@@ -180,7 +180,7 @@ window.onload = function () {
         var c = document.getElementById("myCanvas");
 
         c.height = h;
-        c.width =  w;
+        c.width = w;
 
         var ctx = c.getContext("2d");
 
@@ -191,16 +191,16 @@ window.onload = function () {
         // Objects...
 
         // Backrounbd image
-        var bg = document.getElementById("background");
-        var ctb = bg.getContext("2d");
-        bg.width = w;
-        bg.height = h;
-        var bgImage = new Image();
-        bgImage.src = 'imgs/IMG_5065.jpg';
-        bgImage.addEventListener('load', drawBG, false);
-        function drawBG() {
-            ctb.drawImage(bgImage, 0, 0)
-        }
+        // var bg = document.getElementById("background");
+        // var ctb = bg.getContext("2d");
+        // bg.width = w;
+        // bg.height = h;
+        // var bgImage = new Image();
+        // bgImage.src = 'imgs/IMG_5065.jpg';
+        // bgImage.addEventListener('load', drawBG, false);
+        // function drawBG() {
+        //     ctb.drawImage(bgImage, 0, 0)
+        // }
 
 
 
@@ -209,7 +209,7 @@ window.onload = function () {
             y: 100,
             dy: 3,
             r: 50,
-            color: "red",
+            color: "#fff",
             lw: 3,
             start: Math.PI + Math.PI / 2,
             end: Math.PI - Math.PI / 2
@@ -219,7 +219,7 @@ window.onload = function () {
             h: arc.r * 2,
             lw: 1,
             x: arc.x - 25,
-            color: "red",
+            color: "#fff",
             status: true
         }
 
@@ -233,20 +233,26 @@ window.onload = function () {
 
         var boardY;
         var boardMove = false;
-        var totalArr = 5;
+        var totalArr = 10;
         updArr(totalArr);
+        var bgImage = new Image();
+        bgImage.src = 'imgs/IMG_5065.jpg';
+        bgImage.addEventListener('load', drawBoard, false);
 
         function drawBoard() {
+            //img target
+            ctx.drawImage(bgImage, board.x, board.y - board.height / 2, board.width, board.height)
+            // end img target
             ctx.beginPath();
             ctx.fillRect(board.x, board.y - 5, 40, board.width + 3);
             ctx.fillRect(board.x, board.y - board.height / 2, board.width, board.height);
             ctx.moveTo(board.x, board.y - 15);
             ctx.quadraticCurveTo(board.x - 10, board.y, board.x, board.y + 15);
-            //ctx.lineTo(10,6);
-            ctx.fillStyle = "purple";
+            ctx.lineTo(10, 6);
+            ctx.fillStyle = "green";
             ctx.fill();
             ctx.closePath();
-            ctx.fillStyle = "red";
+            ctx.fillStyle = "#fff";
 
             if (board.y >= h || board.y <= 0) {
                 board.dy *= -1;
@@ -337,7 +343,7 @@ window.onload = function () {
                                         var currentScore = Math.round(board.height / 20) - Math.round(Math.abs(scores / 10));
                                         if (currentScore >= 7) {
                                             newF();
-                                            // totalArr += 2;
+                                            // totalArr += 2; / adding arrows when hit bulls eye
                                             try {
                                                 successSound.play().catch(function (e) { });
                                             } catch (err) {
@@ -375,7 +381,7 @@ window.onload = function () {
                                         if (bestScore < totalScore) {
                                             bestScore = totalScore;
                                             try {
-                                                highScoreSound.play().catch(function (e) { }); 
+                                                highScoreSound.play().catch(function (e) { });
                                             } catch (err) {
                                             }
                                         }
