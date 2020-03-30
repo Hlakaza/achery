@@ -100,6 +100,7 @@ window.onload = function () {
                 uScore.style.top = t + "%";
                 uScore.style.left = l + "%";
                 uScore.style.opacity = o;
+                uScore.style.color = '#fff';
                 t -= 4;
                 l -= 3;
                 o -= 0.1;
@@ -142,8 +143,9 @@ window.onload = function () {
         fwBuilder.prototype.draw = function () {
             for (var i = 0; i < this.n; i++) {
                 ctx2.beginPath();
-                ctx2.arc(this.balls[i].x, this.balls[i].y, 7, 0, Math.PI * 2);
+                ctx2.arc(this.balls[i].x, this.balls[i].y, 4, 0, Math.PI * 2);
                 ctx2.fill();
+                ctx2.fillStyle =  '#fff'
                 ctx2.closePath();
                 this.balls[i].x += this.balls[i].dx;
                 this.balls[i].y += this.balls[i].dy;
@@ -224,7 +226,7 @@ window.onload = function () {
         }
 
         var board = {
-            x: w - 40,
+            x: w - 100,
             y: h / 2,
             dy: 4,
             height: 150,
@@ -235,24 +237,22 @@ window.onload = function () {
         var boardMove = false;
         var totalArr = 10;
         updArr(totalArr);
-        var bgImage = new Image();
-        bgImage.src = 'imgs/IMG_5065.jpg';
-        bgImage.addEventListener('load', drawBoard, false);
+        var target = new Image();
+        target.src = 'imgs/target.png';
+        target.addEventListener('load', drawBoard, false);
 
         function drawBoard() {
-            //img target
-            ctx.drawImage(bgImage, board.x, board.y - board.height / 2, board.width, board.height)
-            // end img target
+            ctx.fillRect(board.x, board.y - board.height / 2, board.width, board.height);
             ctx.beginPath();
             ctx.fillRect(board.x, board.y - 5, 40, board.width + 3);
-            ctx.fillRect(board.x, board.y - board.height / 2, board.width, board.height);
             ctx.moveTo(board.x, board.y - 15);
             ctx.quadraticCurveTo(board.x - 10, board.y, board.x, board.y + 15);
-            ctx.lineTo(10, 6);
+            // ctx.lineTo(10, 6);
             ctx.fillStyle = "green";
             ctx.fill();
             ctx.closePath();
             ctx.fillStyle = "#fff";
+            ctx.drawImage(target, board.x, board.y -70, 100, board.width + 140);
 
             if (board.y >= h || board.y <= 0) {
                 board.dy *= -1;
@@ -295,13 +295,16 @@ window.onload = function () {
             this.vis = true;
             this.fy = arc.y;
         }
-
+        var arrowImg = new Image();
+        arrowImg.src = 'imgs/arrow.png';
+        // arrowImg.addEventListener('load', false);
         Arrow.prototype.drawArrow = function () {
             if (this.vis) {
                 if (this.status) {
                     ctx.fillRect(this.x, this.fy - 3, 10, 6);
                     ctx.fillRect(this.x, this.fy - 1, this.w, 2);
                     ctx.beginPath();
+                    ctx.drawImage(arrowImg, this.x + this.w + 12, this.fy)
                     ctx.moveTo(this.x + this.w, this.fy - 4);
                     ctx.lineTo(this.x + this.w + 12, this.fy);
                     ctx.lineTo(this.x + this.w, this.fy + 4);
