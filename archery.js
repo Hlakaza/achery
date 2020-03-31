@@ -5,11 +5,15 @@ var canvas = document.getElementById("archery"),
   pointsTally = 0;
 givenArrows = 10
 targetPosition = 220;
-bowArrow = 200;
+bowArrow = 400;
 function addPoints(points) {
   pointsTally += points;
   var pointsEl = document.getElementById('points');
-  pointsEl.innerHTML = pointsTally + ' points';;
+  var progressEl = document.getElementById('progress');
+  var arrowsLeftEl = document.getElementById('arrowsLeft');
+  pointsEl.innerHTML = pointsTally;
+  progressEl.style.width = pointsTally + '%'
+  arrowsLeftEl.style.width = givenArrows * 10 + '%'
 }
 
 function caculateArrows() {
@@ -78,9 +82,9 @@ var BaseObject = function (opts) {
 var Arrow = function (opts) {
   var defaultOpts = new BaseObject({
     height: 8,
-    speed: 24,
+    speed: 40,
     angle: -20,
-    gravity: 16,
+    gravity: 34,
     flying: false,
     dead: false,
     width: 80,
@@ -98,11 +102,11 @@ var Arrow = function (opts) {
           var points = 10 - distanceFromCentre;
           if (points < 0)
             points = 0;
+          givenArrows--
           addPoints(points);
           console.log(points, distanceFromCentre);
           this.flying = false;
           this.dead = true;
-          givenArrows--
           caculateArrows()
         }
       } else if (!this.dead) {
@@ -187,8 +191,13 @@ var Target = function (opts) {
     scale: new Vector(0.5, 1),
     draw: function () {
 
-      ctx.rect(this.position.x - 50, 0, 350, canvas.height);
-      ctx.fillStyle = '#5d4037';
+      ctx.rect(this.position.x - 10, 0, 350, canvas.height);
+      ctx.fillStyle = '#ba631c';
+      ctx.fill();
+
+         ctx.beginPath();
+      ctx.rect(this.position.x - 20, 0, 100, canvas.height);
+      ctx.fillStyle = '#934c0c';
       ctx.fill();
 
       ctx.beginPath();
@@ -197,23 +206,23 @@ var Target = function (opts) {
       ctx.fill();
 
 
-      ctx.beginPath();
-      ctx.moveTo(this.position.x - 200, 0);
-      ctx.lineTo(this.position.x - 300, this.position.y / 3);
-      ctx.lineTo(this.position.x + 100, this.position.y / 4);
-      ctx.lineTo(this.position.x + 500, this.position.y / 3);
-      ctx.lineTo(this.position.x + 500, 0);
-      ctx.fillStyle = '#388e3c';
-      ctx.fill();
+      // ctx.beginPath();
+      // ctx.moveTo(this.position.x - 200, 0);
+      // ctx.lineTo(this.position.x - 300, this.position.y / 3);
+      // ctx.lineTo(this.position.x + 100, this.position.y / 4);
+      // ctx.lineTo(this.position.x + 500, this.position.y / 3);
+      // ctx.lineTo(this.position.x + 500, 0);
+      // ctx.fillStyle = '#388e3c';
+      // ctx.fill();
 
-      ctx.globalAlpha = 0.5;
-      ctx.beginPath();
-      ctx.moveTo(this.position.x - 300, this.position.y / 3);
-      ctx.lineTo(this.position.x + 100, this.position.y / 4);
-      ctx.lineTo(this.position.x + 500, this.position.y / 3);
-      ctx.lineTo(this.position.x + 500, this.position.y / 10);
-      ctx.fillStyle = '#212121';
-      ctx.fill();
+      // ctx.globalAlpha = 0.5;
+      // ctx.beginPath();
+      // ctx.moveTo(this.position.x - 300, this.position.y / 3);
+      // ctx.lineTo(this.position.x + 100, this.position.y / 4);
+      // ctx.lineTo(this.position.x + 500, this.position.y / 3);
+      // ctx.lineTo(this.position.x + 500, this.position.y / 10);
+      // ctx.fillStyle = '#212121';
+      // ctx.fill();
 
       ctx.globalAlpha = 1;
 
@@ -274,7 +283,7 @@ var Bow = function (opts) {
   var defaultOpts = new BaseObject({
     position: new Vector(60, bowArrow),
     angle: 0,
-    scale: new Vector(3, 1),
+    scale: new Vector(2, 1),
     draw: function () {
 
       ctx.lineCap = "round";
@@ -315,7 +324,7 @@ var Bow = function (opts) {
       var arrowPosX = this.arrow.position.x - this.arrow.width / (2 * this.scale.x);
 
       ctx.lineTo((arrowPosX < this.position.x + 5 ? arrowPosX : this.position.x + 5), (arrowPosX < this.position.x + 5 ? this.arrow.position.y : this.position.y));
-      ctx.lineTo(this.position.x + 5, this.position.y + 78);
+      ctx.lineTo(this.position.x + 5, this.position.y + 80);
       ctx.lineWidth = 2;
       ctx.strokeStyle = "#212121";
       ctx.stroke();
@@ -337,7 +346,7 @@ canvas.addEventListener('click', function (e) {
     setTimeout(function () {
       obj = new Arrow({ angle: bowObject.angle });
       bowObject.arrow = obj;
-    }, 200);
+    }, 300);
   }
 });
 
@@ -352,11 +361,11 @@ function calculateCanvasWidth() {
 function setPositions() {
   if (canvas.width > 812) {
     targetPosition = 400;
-    bowArrow = 300;
-  } else if(canvas.height > canvas.width) {
-       alert('Please set your device to land scape mode')
-       location.reload();
-    }
+    bowArrow = canvas.height - 400;
+  } else if (canvas.height > canvas.width) {
+    alert('Please set your device to land scape mode')
+    location.reload();
+  }
 }
 
 // canvas.width = 1600;
