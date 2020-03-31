@@ -5,7 +5,7 @@ var canvas = document.getElementById("archery"),
   pointsTally = 0;
 givenArrows = 10
 targetPosition = 220;
-bowArrow = 400;
+bowArrow = 200;
 function addPoints(points) {
   pointsTally += points;
   var pointsEl = document.getElementById('points');
