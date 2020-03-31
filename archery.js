@@ -362,10 +362,11 @@ function setPositions() {
   if (canvas.width > 812) {
     targetPosition = 400;
     bowArrow = canvas.height - 400;
-  } else if (canvas.height > canvas.width) {
-    alert('Please set your device to land scape mode')
-    location.reload();
-  }
+  } 
+  // else if (canvas.height > canvas.width) {
+  //   alert('Please set your device to land scape mode')
+  //   location.reload();
+  // }
 }
 
 // canvas.width = 1600;
