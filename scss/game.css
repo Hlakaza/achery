@@ -29,6 +29,15 @@ canvas {
 	background: #fff;
 	float: left;
 }
+.heading {
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.arrows .heading {
+  margin-left: 80px;
+}
 .score,
 .arrows {
 	width: 30%;
@@ -55,7 +64,7 @@ canvas {
 
 .arrow-img {
 	position: absolute;
-	left: -70px;
+	left: -35px;
 	top: -65px;
 	width: 149px;
 }
@@ -75,7 +84,7 @@ canvas {
 	transition: width 500ms ease-in-out;
 	border-radius: 100px;
 }
-span#points {
+#points {
 	position: absolute;
 	right: -2px;
 	font-size: 2rem;
