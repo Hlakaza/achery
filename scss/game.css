@@ -106,9 +106,13 @@ canvas {
 	font-weight: bolder;
 }
 
-@media (max-width: 812px) {
+@media (max-width: 1000px) {
   .heading {
     font-size: 1rem;
+} 
+
+.logo {
+  min-height: 50px;
 }
 
 }

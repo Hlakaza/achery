@@ -25,7 +25,7 @@ window.onload = function () {
     }
   }
   calculateCanvasWidth();
-  setPositions()
+
 
   var Controller = {
     objects: [],
@@ -335,25 +335,19 @@ window.onload = function () {
 
   requestAnimationFrame(Controller.render);
 
-  // window.addEventListener('resize', calculateCanvasWidth());
-
   function calculateCanvasWidth() {
-    // canvas.width = window.innerWidth;
-    // canvas.height = window.innerHeight;
-    canvas.width = 1024;
-    canvas.height = 600;
-  }
-  function setPositions() {
-    if (canvas.width > 812) {
-      targetPosition = 300;
-      bowArrow = 350;
+    if(window.innerHeight > window.innerWidth){
+      alert("Please use Landscape!");
     }
-    // else if (canvas.height > canvas.width) {
-    //   alert('Please set your device to land scape mode')
-    //   location.reload();
-    // }
+    canvas.width =  window.innerWidth < 1024 ? window.innerWidth : 1024;
+    canvas.height = 600;
+    // setPositions()
   }
-}
 
-// canvas.width = 1024;
-// canvas.height = 600;
+  // function setPositions() {
+  //   if (canvas.width > 812) {
+  //     targetPosition = 300;
+  //     bowArrow = 350;
+  //   }
+  // }
+}
