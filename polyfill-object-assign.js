@@ -1,3 +1,6 @@
+/** 
+ * This is to allow the Object.Assign() to work in IE
+ */
 if (typeof Object.assign != 'function') {
     Object.assign = function (target) {
         'use strict';
