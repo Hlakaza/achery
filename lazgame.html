@@ -2,25 +2,43 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js">
- <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./scss/game.css">
-    </head>
-    <body>
-    <div class="achery-container">
-        <canvas id="archery"></canvas>
-        <div class="game-details">
-            <p id="points">0 points</p>
-
-        </div>
-    </div>
-        <script src="./lazygame.js" async defer></script>
-    </body>
+	<!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="./scss/game.css" />
+	</head>
+	<body>
+		<div class="game-container">
+			<canvas id="archery"></canvas>
+			<div class="game-details">
+				<span class="logo"></span>
+				<div class="game-data">
+					<div class="score">
+              <span class="heading">Score</span>
+						<div class="progress-bar">
+							<span id="progress" class="progress-bar-fill" style="width: 0%;"></span>
+					   	<span id="points">0</span>
+						</div>
+					</div>
+          <div class="player-avatar">
+              <div class="avatar-icon"> </div>
+          </div>
+          <div class="arrows">
+            <span class="heading">Arrow left</span>
+            	<div class="progress-bar">
+							<span id="arrowsLeft" class="progress-bar-fill" style="width: 100%;"></span>
+               <img class="arrow-img" src="./imgs/Arrows.png" alt="" srcset="">
+						</div>
+          </div>
+				</div>
+			</div>
+		</div>
+		<script src="./lazygame.js" async defer></script>
+	</body>
 </html>

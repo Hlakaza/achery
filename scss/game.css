@@ -1,8 +1,113 @@
 body {
-    margin: 0;
-   overflow: hidden;
+	margin: 0;
+	background: rgba(0, 0, 0, 0.85);
 }
-.achery-container {
-  position: relative;
-  overflow: hidden;
+canvas {
+	background-image: url('../imgs/mainbg.jpg');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	margin: auto;
+}
+.game-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	max-width: 1024px;
+	margin: auto;
+}
+.game-details {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.65);
+
+	width: 100%;
+}
+.logo {
+	width: 15%;
+	height: 100%;
+	min-height: 100px;
+	background: #fff;
+	float: left;
+}
+.heading {
+    color: white;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.arrows .heading {
+  margin-left: 80px;
+}
+.score,
+.arrows {
+	width: 30%;
+	padding: 15px;
+}
+.player-avatar {
+	width: 15%;
+}
+.avatar-icon {
+	width: 80px;
+	height: 80px;
+	background: #005cbc;
+	border-radius: 100%;
+	border: 10px solid #fff;
+  margin: auto;
+}
+.game-data {
+	width: 85%;
+	float: left;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.arrow-img {
+	position: absolute;
+	left: -35px;
+	top: -65px;
+	width: 149px;
+}
+
+.progress-bar {
+	width: 100%;
+	background-color: #fff;
+	padding: 5px;
+	border-radius: 100px;
+	position: relative;
+}
+
+.progress-bar-fill {
+	display: block;
+	height: 20px;
+	background-color: #005cbc;
+	transition: width 500ms ease-in-out;
+	border-radius: 100px;
+}
+#points {
+	position: absolute;
+	right: -2px;
+	font-size: 2rem;
+	top: -30px;
+	color: #fff;
+	background: #005cbc;
+	border: 15px solid rgb(255, 255, 255);
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+	font-weight: bolder;
+}
+
+@media (max-width: 812px) {
+  .heading {
+    font-size: 1rem;
+}
+
 }
