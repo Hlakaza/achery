@@ -5,8 +5,8 @@ window.onload = function () {
     bowObject,
     pointsTally = 0;
   givenArrows = 10
-  targetPosition = 220;
-  bowArrow = 200;
+  targetPosition = 210;
+  bowArrow = 250;
   bowArrowX = 90;
   function addPoints(points) {
     pointsTally += points;
@@ -341,13 +341,13 @@ window.onload = function () {
     }
     canvas.width =  window.innerWidth < 1024 ? window.innerWidth : 1024;
     canvas.height = 600;
-    // setPositions()
+    setPositions()
   }
 
-  // function setPositions() {
-  //   if (canvas.width > 812) {
-  //     targetPosition = 300;
-  //     bowArrow = 350;
-  //   }
-  // }
+  function setPositions() {
+    if (canvas.width > 812) {
+      targetPosition = 300;
+      bowArrow = 350;
+    }
+  }
 }
