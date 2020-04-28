@@ -12,8 +12,25 @@
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="./scss/game.css" />
+		<link rel="stylesheet" href="./scss/modal.css">
 	</head>
 	<body>
+		<div class="backdrop">
+			<div class="game-over__modal">
+				<div class="game-over__heading">
+					GAME OVER !
+				</div>
+				<div class="game-over__details">
+					Good Try, You socred at total of <span id="game-over__points">100</span> points!
+					<div class="game-over__restart">
+						<button id="restart-reload-game" class="btn--gam-over__restart">
+							PLAY AGAIN
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div class="game-container">
 			<canvas id="archery"></canvas>
 			<div class="game-details">
