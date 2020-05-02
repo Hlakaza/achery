@@ -8,6 +8,7 @@ window.onload = function () {
   targetPosition = 210;
   bowArrow = 250;
   bowArrowX = 90;
+
   function addPoints(points) {
     pointsTally += points;
     var pointsEl = document.getElementById('points');
@@ -20,8 +21,13 @@ window.onload = function () {
 
   function caculateArrows() {
     if (!givenArrows) {
-      alert('Game over')
-      location.reload()
+      // alert('Game over')
+      document.querySelector('.backdrop').style.display = "block";
+      document.querySelector('#game-over__points').textContent = pointsTally;
+      document.getElementById('restart-reload-game').addEventListener('click', function() {
+        window.location.reload();
+      });
+      
     }
   }
   calculateCanvasWidth();

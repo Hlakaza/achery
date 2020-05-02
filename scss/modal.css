@@ -1,0 +1,50 @@
+.backdrop {
+    height: 100vh;
+    width: 100vw;
+    background-color: #0000006b;
+    z-index: 100;
+    position: fixed;
+    display: none;
+}
+
+.game-over__modal {
+    height: 27vh;
+    width: 40vh;
+    background-color: cornsilk;
+    position: relative;
+    margin: 170px auto;
+
+}
+
+.game-over__heading {
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.game-over__details {
+    color: darkblue;
+    padding: 25px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.btn--gam-over__restart {
+    border: none;
+    padding: 10px 20px;
+    margin: 20px;
+    width: 300px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(250, 152, 4);
+}
+
+#game-over__points {
+    color: teal;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: auto;
+}
